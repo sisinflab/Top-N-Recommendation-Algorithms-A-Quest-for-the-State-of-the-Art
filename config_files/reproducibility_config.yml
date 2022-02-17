@@ -1,0 +1,142 @@
+experiment:
+  dataset: movielens_1m
+  data_config:
+    strategy: dataset
+    dataset_path: ../data/{0}/dataset.tsv
+  prefiltering:
+    - strategy: global_threshold
+      threshold: 4
+    - strategy: iterative_k_core
+      core: 10
+  binarize: True
+  splitting:
+    save_on_disk: True
+    save_folder: ../data/{0}/splitting/
+    test_splitting:
+      test_ratio: 0.2
+      strategy: random_subsampling
+      folds: 5
+  top_k: 50
+  evaluation:
+    cutoffs: [10, 20, 50]
+    simple_metrics: [nDCG, Recall, HR, Precision, MAP, MRR]
+  gpu: 1
+  external_models_path: ../external/models/__init__.py
+  models:
+    Random:
+      meta:
+        save_recs: True
+    external.MostPop:
+      meta:
+        verbose: True
+        save_recs: True
+    UserKNN: 
+      meta:
+        hyper_max_evals: 20
+        hyper_opt_alg: tpe
+        save_recs: True
+        verbose: True
+      neighbors: [ uniform, 5, 1000 ]
+      similarity: [cosine, jaccard, dice, mahalanobis, euclidean]
+    ItemKNN: 
+      meta:
+        save_recs: True
+        verbose: True
+        hyper_max_evals: 20
+        hyper_opt_alg: tpe
+      neighbors: [uniform, 5, 1000]
+      similarity: [cosine, jaccard, dice, pearson, euclidean]
+    RP3beta: 
+      meta:
+        hyper_max_evals: 20
+        hyper_opt_alg: tpe
+        verbose: True
+        save_recs: True
+      neighborhood: [quniform, 5, 1000, 1]
+      alpha: [uniform, 0, 2]
+      beta: [uniform, 0, 2]
+      normalize_similarity: [True, False]
+    Slim:
+      meta:
+        hyper_max_evals: 20
+        hyper_opt_alg: tpe
+        verbose: True
+        save_recs: True
+      l1_ratio: [loguniform, -11.512925464970229, 0]
+      alpha: [uniform, 10e-3, 1]
+      neighborhood: [quniform, 5, 1000, 1]
+    EASER: 
+      meta:
+        verbose: True
+        save_recs: True
+        hyper_max_evals: 20
+        hyper_opt_alg: tpe
+      l2_norm: [loguniform, 2.72, 16]
+    MF2020: 
+      meta:
+        hyper_max_evals: 20
+        hyper_opt_alg: tpe
+        verbose: True
+        save_recs: True
+      epochs: [quniform, 30, 100, 1]
+      factors: [8, 16, 32, 64, 128, 256]
+      lr: [loguniform, -11.512925464970229, 0]
+      reg: [loguniform, -11.512925464970229, -2.30258509299]
+      m: [4,6,8]
+    iALS: 
+      meta:
+        hyper_max_evals: 20
+        hyper_opt_alg: tpe
+        verbose: True
+        save_recs: True
+        validation_rate: 20
+      epochs: [uniform, 1, 500]
+      scaling: [linear, log]
+      factors: [quniform, 1, 200, 1]
+      alpha: [uniform, 10e-4, 50]
+      epsilon: [uniform, 10e-4, 10]
+      reg: [uniform, 10e-4, 10e-3]
+    BPRMF:
+      meta:
+        hyper_max_evals: 20
+        hyper_opt_alg: tpe
+        verbose: True
+        save_recs: True
+      lr: [loguniform, -11.512925464970229, 0]
+      batch_size: [128, 256, 512]
+      epochs: [quniform, 30, 100, 1]
+      bias_regularization: 0
+      user_regularization: [loguniform, -11.512925464970229, -2.30258509299]
+      positive_item_regularization: [loguniform, -11.512925464970229, -2.30258509299]
+      negative_item_regularization: [loguniform, -11.512925464970229, -2.30258509299]
+      factors: [8, 16, 32, 64, 128, 256]
+    NeuMF: #from the original paper + Rendle
+      meta:
+        hyper_max_evals: 50
+        hyper_opt_alg: tpe
+        verbose: True
+        save_recs: True
+        validation_rate: 1
+      mf_factors:  [8, 16, 32, 64, 128, 256]
+      dropout: 0
+      is_mf_train: True
+      is_mlp_train: True
+      batch_size: [64, 128, 256]
+      epochs: [quniform, 30, 100, 1]
+      lr: [loguniform, -11.512925464970229, 0]
+      m: [4,6,8]
+    MultiVAE: 
+      meta:
+        hyper_max_evals: 50
+        hyper_opt_alg: tpe
+        save_recs: True
+        verbose: True
+      lr: [loguniform, -11.512925464970229, 0]
+      epochs: [quniform, 100, 300, 1]
+      batch_size: [64, 128, 256]         
+      intermediate_dim: [quniform, 400, 800, 1]
+      latent_dim: [quniform, 100, 400, 1]
+      dropout_pkeep: 0.5
+      reg_lambda: [loguniform, -11.512925464970229, 0] 
+
+
