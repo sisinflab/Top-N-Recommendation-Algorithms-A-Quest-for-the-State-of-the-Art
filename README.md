@@ -51,6 +51,8 @@ source venv/bin/activate
 python run_reproducibility_study.py
 ```
 To set the dataset for an analysis,  edit the `dataset` field in the configuration file according to the following naming scheme
+
+
 | Dataset                   | Dataset config name        |
 |---------------------------|----------------------------|
 | **Movielens 1M**          | movielens_1m               |
