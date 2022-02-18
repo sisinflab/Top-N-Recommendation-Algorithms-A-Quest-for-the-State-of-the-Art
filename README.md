@@ -43,9 +43,9 @@ The following table shows the statistics of the original datasets and the filter
 | **Amazon Digital Music**  | 1584082               | 840372                    | 45992                 | 5                         | 4                     |
 | **Epinions**              | 300548                | 8514                      | 8510                  | 2                         | /                     |
 
-### Running and reproduce experiments
+### Running and reproducing experiments
 
-To reproduce the experiments that guided our analysis, start the virtual environment and run the following command
+To reproduce the experiments from our analysis, start the virtual environment and run the following command
 ```bash
 source venv/bin/activate
 python run_reproducibility_study.py
