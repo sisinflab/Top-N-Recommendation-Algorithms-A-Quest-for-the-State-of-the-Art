@@ -5,7 +5,7 @@ This is the repository for the paper _Top-N Recommendation Algorithms: A Quest f
 The experiments reported in this paper were done with the help of the recent **Elliot** framework published by Anelli et al. We therefore also refer you to the official GitHub [page](https://github.com/sisinflab/elliot) and [documentation](https://elliot.readthedocs.io/en/latest/) of this framework.
 
 This repository contains the configuration files and datasets needed for reproducing the experiments analyzed in our work.
-In particular, the configuration file in the `config_files` folder contains the experiment setup adopted for each model under analysis. For further details on exploration ranges and hyperparameters for the best models please refer to [the supplemental material](https://anonymous.4open.science/r/Top-N-Recommendation-Algorithms-A-Quest-for-the-State-of-the-Art-1227/Recommender_Systems_State_of_the_Art_Additional_Material.pdf).
+In particular, the configuration file in the `config_files` folder contains the experiment setup adopted for each model under analysis. For further details on exploration ranges and hyperparameters for the best models please refer to [the supplemental material](./blob/master/Recommender_Systems_State_of_the_Art_Additional_Material.pdf).
 
 ### Installation guidelines
 Elliot requires Python version 3.8 or later.
