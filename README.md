@@ -1,6 +1,4 @@
-# Top-N Recommendation Algorithms: A Quest for the State of the Art
 
-This is the repository for the paper _Top-N Recommendation Algorithms: A Quest for the State of the Art_, under review at ACM UMAP 2022.
 
 The experiments reported in this paper were done with the help of the recent **Elliot** framework published by Anelli et al. We therefore also refer you to the official GitHub [page](https://github.com/sisinflab/elliot) and [documentation](https://elliot.readthedocs.io/en/latest/) of this framework.
 
